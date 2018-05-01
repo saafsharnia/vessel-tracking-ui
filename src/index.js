@@ -1,8 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import store from './redux/store/store';
+import {Provider} from 'react-redux';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import {Route, Router} from 'react-router';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import {syncHistoryWithStore} from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const history = syncHistoryWithStore(createBrowserHistory(), store);
+injectTapEventPlugin();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={history}>
+        <Route path="/" component={App}>
+        </Route>
+        </Router>
+    </Provider>,
+    document.getElementById('root')
+);
