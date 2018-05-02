@@ -12,8 +12,3 @@ First of all you need to install node.js and npm on your local system. Then run 
 
 ## Live demo
 http://vt.saeedeh.brogrammerserver.net/
-
-#### What could be improved?
-- routing
-- better styling
-- better sorting
