@@ -18,9 +18,10 @@ export default connect( (state) => ({
     }
 
     render() {
+        const styles = this._style();
         const vessels = this.props.vessels.data.features ? this.props.vessels.data.features : [];
         return(
-            <Card>
+            <Card style={styles.card}>
                 <CardHeader title='Vessels'/>
             <Table>
                 <TableHead>
@@ -64,6 +65,17 @@ export default connect( (state) => ({
                 vesselsAction.getVesselTracks(vessel);
             }
         )
+    }
+
+    _style () {
+        return {
+            card: {
+                width: window.screen.width > 600 ? '50%' : '100%',
+                marginTop: window.screen.width > 600 ? '5%' : 0,
+                marginLeft: window.screen.width > 600 ? '25%' : 0,
+            }
+        }
+
     }
 }
 

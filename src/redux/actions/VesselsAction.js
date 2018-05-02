@@ -14,7 +14,7 @@ class VesselsAction {
     }
 
     getVesselTracks(vesselData) {
-        store.dispatch({type: 'VesselTracks', data: vesselData.geometry.coordinates});
+        store.dispatch({type: 'VesselTracks', data: vesselData});
     }
 }
 

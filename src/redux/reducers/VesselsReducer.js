@@ -1,4 +1,4 @@
-export default function VesselsReducer(state = {data: {}, coordinates: null , error: ''}, action) {
+export default function VesselsReducer(state = {data: {}, coordinates: null, vesselName: null, vesselLastUpdate: null , error: ''}, action) {
     switch (action.type) {
         case 'VesselsList':
             return {
@@ -9,7 +9,9 @@ export default function VesselsReducer(state = {data: {}, coordinates: null , er
         case 'VesselTracks':
             return {
                 ...state,
-                coordinates: action.data
+                coordinates: action.data.geometry.coordinates,
+                vesselName: action.data.properties.name,
+                vesselLastUpdate: action.data.properties.time
             };
         case 'VesselsError':
             return {
