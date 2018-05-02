@@ -13,11 +13,11 @@ export default connect((state) => ({
     componentDidMount() {
         const coords = this.props.vessels.coordinates;
         let map = new window.google.maps.Map(this.refs.googleMap, {
-            zoom: 3,
-            center: coords[0][0],
+            zoom: 4,
+            center: coords[0][1],
         });
 
-        map.data.add({geometry: new window.google.maps.Data.Polygon(coords)});;
+        map.data.add({geometry: new window.google.maps.Data.Polygon(coords)});
     }
 
     render() {
@@ -25,7 +25,7 @@ export default connect((state) => ({
 
         return(
             <Paper style={styles.paper}>
-                <div style={{width:'100%', height: 600}} ref="googleMap"></div>
+                <div style={styles.map} ref="googleMap" />
                 <Typography variant="headline" component="h2" style={styles.vesselName}>
                     {this.props.vessels.vesselName}
                 </Typography>
@@ -40,8 +40,8 @@ export default connect((state) => ({
                 </Button>
             </Paper>
         );
-
     }
+
     _onBackClick() {
         vesselActions.getVesselsList();
 
@@ -50,6 +50,10 @@ export default connect((state) => ({
 
     _styles () {
         return {
+            map: {
+                width:'100%',
+                height: 400
+            },
             backButton: {
                 margin: 17
             },
